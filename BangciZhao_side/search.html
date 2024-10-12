@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="./resources/angular.min.js"></script>
+    <style>
+        body {
+            background: #000;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .wrap {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            padding: 0 40px;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            flex: 40%;
+            cursor: pointer;
+            margin: 20px;
+            padding: 25px;
+            box-sizing: border-box;
+            border: 2px solid #ff6347;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        #searchInput {
+            height: 35px;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #ff6347;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        button {
+            height: 35px;
+            margin-left: 10px;
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff4500;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        div {
+            margin-top: 10px;
+        }
+    </style>
+    <style>
+        .menuLink:hover {
+            color: #f00 !important;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div ng-app="App" ng-controller="AppCtrl">
+        <div style="display: flex;justify-content: space-between;margin-top: 0;">
+            <span><a href="./admin.html" class="back-link menuLink">admin</a></span>
+            <div style="margin-top: 0;">
+                <a href="./index.html" class="back-link menuLink">home</a>
+                <a href="./search.html" class="back-link menuLink">search</a>
+                <a href="./fundraisers.html" class="back-link menuLink">fundraisers</a>
+                <a href="./donation.html" class="back-link menuLink">donation</a>
+            </div>
+        </div>
+        <div style="padding:20px 8%; box-sizing: border-box;display: flex;justify-content: center;">
+            <input type="search" style="height: 30px;" ng-model="Active" placeholder="Active">
+            <input type="search" style="height: 30px;" ng-model="ORGANIZER" placeholder="ORGANIZER">
+            <button ng-click="search()" style="height: 30px;margin-left:5px;">search</button>
+        </div>
+        <div class="wrap">
+            <div ng-click="fundraisers(item.FUNDRAISER_ID)" class="item" ng-repeat="item in listData">
+                <div>
+                    <img style="width: 300px;height: 300px;" ng-src="{{item.IMG}}" alt="">
+                </div>
+                <div>
+                    {{item.CAPTION}}
+                </div>
+
+                <div style="margin-top: 5px;">
+                    {{item.TARGET_FUNDING}} {{item.TARGET_FUNDING - item.CURRENT_FUNDING}}
+                </div>
+                <div style="margin-top: 5px;">
+                </div>
+                <div style="margin-top: 5px;">
+                    organizer: {{item.ORGANIZER}},{{item.ORGANIZER}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('App', []);
+        app.controller('AppCtrl', function ($scope, $http) {
+            $scope.paraminit = localStorage.getItem("id");
+            $http.get('http://localhost:4000/home')
+                .success(function (response) {
+                    $scope.listData = response;
+                });
+            $scope.search = function () {
+                if ($scope.ORGANIZER == "" && $scope.Active == '') {
+                    return alert("Enter what you're searching for");
+                }
+                $http.get('http://localhost:4000/SearchFundraisers?ORGANIZER=' + $scope.ORGANIZER + '&Active=' + $scope.Active)
+                    .success(function (response) {
+                        $scope.listData = response;
+                    });
+            }
+            $scope.fundraisers = function (FUNDRAISER_ID) {
+                localStorage.setItem("id", JSON.stringify(FUNDRAISER_ID));
+                window.location.href = "./fundraisers.html";
+            }
+
+        });
+    </script>
+</body>
+
+</html>

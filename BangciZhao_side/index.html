@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Helping Those in Need</title>
+    <script type="text/javascript" src="./resources/angular.min.js"></script>
+</head>
+<style>
+    * {
+        /* margin: 0; */
+        padding: 0;
+    }
+
+    body {
+        color: #fff;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #222222, #000000);
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    .title {
+        font-size: 36px;
+        margin-bottom: 40px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .intro {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .image-item {
+        flex-basis: 45%;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        margin-bottom: 30px;
+        transition: transform 0.3s ease;
+    }
+
+    .image-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .caption {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: #ddd;
+    }
+
+    .image {
+        width: 100%;
+        border: 1px solid #fff;
+        border-radius: 8px;
+    }
+
+    .description {
+        font-size: 16px;
+        color: #ccc;
+        margin-top: 10px;
+    }
+
+    .call-to-action {
+        margin-top: 40px;
+    }
+
+    .call-to-action p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .help-link-btn {
+        display: inline-block;
+        padding: 10px 30px;
+        background-color: #fff;
+        color: #000;
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    .help-link-btn:hover {
+        background-color: #eee;
+    }
+</style>
+<style>
+    .menuLink:hover {
+        color: #f00 !important;
+    }
+
+    .back-link {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px;
+        display: inline-block;
+        transition: color 0.3s ease;
+    }
+</style>
+
+<body style="background: #000;">
+    <div style="display: flex;justify-content: space-between;">
+        <span><a href="./admin.html" class="back-link menuLink">admin</a></span>
+        <div>
+            <a href="./index.html" class="back-link menuLink">home</a>
+            <a href="./search.html" class="back-link menuLink">search</a>
+            <a href="./fundraisers.html" class="back-link menuLink">fundraisers</a>
+            <a href="./donation.html" class="back-link menuLink">donation</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="title text-center">Please help them</h2>
+        <p class="intro text-center">There are many people in the world who are in need of our help. Let's come together
+            and make a difference.</p>
+        <div class="image-gallery">
+            <div class="image-item">
+                <p class="caption">deformed man</p>
+                <img src="https://www.mwshe.cn/wp-content/uploads/2021/06/1527179011064116f81a267.jpg" alt=""
+                    class="image">
+                <p class="description">People with deformities often face many challenges in life. They might struggle
+                    with mobility, finding employment, and being accepted by society. For example, a person with a
+                    severe physical deformity may have difficulty using public transportation or accessing certain
+                    buildings due to lack of accessibility. They need our support and understanding to live with
+                    dignity.</p>
+            </div>
+            <div class="image-item">
+                <p class="caption">left-behind children</p>
+                <img src="https://img2.baidu.com/it/u=4246497918,1447456721&fm=253&fmt=auto&app=120&f=JPEG?w=1200&h=800"
+                    alt="" class="image">
+                <p class="description">Left-behind children lack the care and companionship of their parents. They might
+                    have to take on more responsibilities at home, such as looking after younger siblings or doing
+                    household chores. In some cases, they may also face difficulties in their studies due to lack of
+                    guidance. For instance, a left-behind child might have to walk several kilometers to school every
+                    day and then come home to an empty house. They need our attention and love to grow up healthily.</p>
+            </div>
+            <div class="image-item">
+                <p class="caption">empty nesters</p>
+                <img src="https://pics1.baidu.com/feed/e61190ef76c6a7ef6646877ab8fe2a55f3de6616.jpeg@f_auto?token=defdceea5e588d102bf48fd0179822e1&s=AF0069806B37A0CA4849850A0100A0C0"
+                    alt="" class="image">
+                <p class="description">Empty nesters often feel lonely and helpless. They might miss the company of
+                    their children and worry about their own health and well-being. For example, an empty nester may
+                    have trouble keeping up with household maintenance or feel isolated without regular interaction.
+                    They need our company and care to enjoy their later years.</p>
+            </div>
+            <div class="image-item">
+                <p class="caption">homeless people</p>
+                <img src="https://img0.baidu.com/it/u=111316590,433818316&fm=253&fmt=auto&app=138&f=JPEG?w=615&h=381"
+                    alt="" class="image">
+                <p class="description">Homeless people face the harsh reality of living without a stable home. They
+                    might endure extreme weather conditions, lack access to proper hygiene facilities, and struggle to
+                    find enough food. For instance, a homeless person may have to sleep on the streets in the cold
+                    winter or go days without a proper meal. They need our compassion and assistance to get back on
+                    their feet.</p>
+            </div>
+            <div class="image-item">
+                <p class="caption">disabled veterans</p>
+                <img src="https://img2.baidu.com/it/u=2358623941,1930777795&fm=253&fmt=auto&app=138&f=JPEG?w=752&h=500"
+                    alt="" class="image">
+                <p class="description">Disabled veterans have sacrificed a lot for our country. They might deal with
+                    physical and mental scars from their service. For example, a disabled veteran may have lost a limb
+                    or be suffering from post-traumatic stress disorder. They need our respect and support to lead a
+                    fulfilling life after their service.</p>
+            </div>
+            <div class="image-item">
+                <p class="caption">elderly in poverty</p>
+                <img src="https://img0.baidu.com/it/u=440074280,45534020&fm=253&fmt=auto&app=138&f=JPEG?w=450&h=320"
+                    alt="" class="image">
+                <p class="description">Elderly people living in poverty face many hardships. They might have limited
+                    resources to meet their basic needs. For example, an elderly person in poverty may not be able to
+                    afford proper medical care or nutritious food. They need our help to live a comfortable and
+                    dignified life in their old age.</p>
+            </div>
+        </div>
+        <div class="call-to-action text-center">
+            <p>Join us in making a positive impact on the lives of those in need.</p>
+            <a href="./search.html" class="help-link-btn">Help them</a>
+        </div>
+    </div>
+</body>
+
+</html>
